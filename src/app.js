@@ -47,7 +47,7 @@ function displayWeather(response) {
   )}%`;
   document.querySelector("#wind").innerHTML = `${Math.round(
     response.data.wind.speed
-  )}km/h`;
+  )}m/h`;
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
@@ -72,30 +72,6 @@ function displayCity(event) {
 
 let form = document.querySelector("#form");
 form.addEventListener("submit", displayCity);
-
-let celsiusTemperature = null;
-
-function changeToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  showCelsius.classList.remove("active");
-  showFahrenheit.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-function changeToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  showFahrenheit.classList.add("active");
-  showCelsius.classList.remove("active");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
-let showCelsius = document.querySelector("#celsius-link");
-showCelsius.addEventListener("click", changeToCelsius);
-
-let showFahrenheit = document.querySelector("#fahrenheit-link");
-showFahrenheit.addEventListener("click", changeToFahrenheit);
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
