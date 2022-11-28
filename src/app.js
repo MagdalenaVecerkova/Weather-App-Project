@@ -18,21 +18,7 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  let month = months[date.getMonth()];
+
   return `${day}, ${hours}:${minutes}`;
 }
 
@@ -42,12 +28,11 @@ function displayWeather(response) {
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
-  document.querySelector("#humidity").innerHTML = `${Math.round(
+  document.querySelector("#humidity").innerHTML = `Humidity: ${Math.round(
     response.data.main.humidity
   )}%`;
-  document.querySelector("#wind").innerHTML = `${Math.round(
-    response.data.wind.speed
-  )}m/h`;
+  document.querySelector("#wind").innerHTML = `Wind:
+  ${Math.round(response.data.wind.speed)}m/h`;
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
@@ -103,11 +88,11 @@ function displayForecast(response) {
             )}</div>
             <img src="http://openweathermap.org/img/wn/${
               forecastDay.weather[0].icon
-            }@2x.png" alt="" width="30" />
+            }@2x.png" alt=""/>
             <div class="weather-forecast-temperature">
               <span class="weather-forecast-temperature-max">${Math.round(
                 forecastDay.temp.max
-              )}°C </span><span class="weather-forecast-temperature-min"> ${Math.round(
+              )}°C  </span><span class="weather-forecast-temperature-min"> ${Math.round(
           forecastDay.temp.min
         )}°C </span>
             </div>
